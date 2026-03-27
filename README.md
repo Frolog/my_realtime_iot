@@ -30,6 +30,9 @@ bash
 chmod +x setup_and_run.sh
 ./setup_and_run.sh
 
+for utomatically close all the terminals:
+./stop_system.sh
+
 🏃 2. Daily Execution & Terminals
 The automation script will automatically open three synchronized terminals:
 [BACKEND]: Node.js server running on port 3000.
