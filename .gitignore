@@ -1,0 +1,6 @@
+server/node_modules/
+mobile/build/
+mobile/.dart_tool/
+venv/
+*~
+.DS_Store
