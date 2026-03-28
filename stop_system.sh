@@ -1,24 +1,19 @@
 #!/bin/bash
 
-echo "🛑 Stopping Real-Time IoT System..."
+echo "🛑 Stopping IoT System Gently..."
 
-# 1. Stop Docker Containers (Elasticsearch & Kibana)
+# 1. Stop Docker
 if [ -f docker-compose.yml ]; then
-    echo "🐳 Shutting down Docker containers..."
     sudo docker-compose down
-else
-    echo "⚠️ docker-compose.yml not found, skipping Docker shutdown."
 fi
 
-# 2. Kill Background Processes (Node, Python, Flutter)
-echo "🔪 Killing running processes (Node, Python, Flutter)..."
-pkill -f "node index.js" 2>/dev/null
-pkill -f "python3 sensor_sim.py" 2>/dev/null
-pkill -f "flutter_tools" 2>/dev/null
-pkill -f "chrome" 2>/dev/null
+# 2. Kill only project-specific processes (not the whole Chrome/Network)
+pkill -f "node index.js"
+pkill -f "python3 sensor_sim.py"
+pkill -f "flutter_tools"
 
-# 3. Final Cleanup
-echo "🧹 Cleaning temporary locks..."
-rm -rf mobile/build/ 2>/dev/null
+# 3. Close the specific terminal tabs we opened
+# This sends a signal to gnome-terminal to close its children
+pkill -f "gnome-terminal"
 
-echo "✅ System stopped and cleaned. Everything is fresh!"
+echo "✅ System Stopped. Browser stays open for your other tabs."

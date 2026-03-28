@@ -71,11 +71,10 @@ app.delete('/delete/:id', async (req, res) => {
   try {
     const { id } = req.params;
     await client.delete({ index: 'sensors_data', id: id, refresh: true });
-    io.emit('item_deleted', id); // Notify all clients
-    res.json({ message: "Deleted successfully" });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
+    io.emit('item_deleted', id); // מודיע ל-Flutter למחוק מהמסך
+    res.json({ message: "Deleted" });
+  } catch (e) { res.status(500).send(e.message); }
 });
+
 
 server.listen(3000, () => console.log('🚀 Real-time Server (v2.0.0) on port 3000'));
