@@ -2,6 +2,19 @@
 
 A high-performance Full-Stack IoT monitoring system featuring **WebSockets**, **Node.js**, **Elasticsearch**, and **Flutter**. This project is fully automated for rapid deployment and real-time data visualization.
 
+ESP/Arduino → transport → backend → database → realtime UI)
+
+sensor_sim.py → REST POST → Node.js → Elasticsearch → Socket.io → Flutter
+
+sys v 2.1.2 include: 
+✔ Backend Node
+✔ Realtime עם WebSocket
+✔ Database (Elastic)
+✔ Frontend UI
+✔ Simulator
+✔ Automation script
+✔ Docker infra
+
 ---
 
 ## 📂 Project Structure
